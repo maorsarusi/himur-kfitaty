@@ -1,5 +1,7 @@
 var betType = "";
-
+/**
+ * a function to arrange the soccer format
+ */
 function soccerFormat() {
 
     var home = document.getElementById("home").value;
