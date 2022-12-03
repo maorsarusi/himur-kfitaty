@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+    .center_select {
+        justify-content: center;
+        align-items: center;
+        height: 70px;
+        display: none;
+    }
+</style>
+
+<style>
+    .center_par {
+        justify-content: center;
+        align-items: center;
+        height: 70px;
+        display: none;
+    }
+</style>
+
+<style>
+    .center_paragraph {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80px;
+    }
+</style>
+
+<style>
+    .center_select {
+        display: none;
+    }
+</style>
+
+<style>
+    .center_maor {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80px;
+        display: none;
+    }
+</style>
+
+<style>
+    .comments {
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90px;
+    }
+</style>
+
+
+
+<style>
+    .listBet {
+        direction: rtl;
+    }
+</style>
+
+<style>
+    .pList {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 800px;
+    }
+</style>
+
+
+<style>
+    input[type="text"]::placeholder {
+        text-align: right;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הימור כפייתי מנהל
+    </title>
+    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+    <script src="himur kfiyati manager.js"></script>
+</head>
+
+
+<body style="background-color:  hsl(68, 82%, 51%);">
+
+    <table width="100%" align="center" dir="rtl" style="max-width: 600px;">
+        <tbody>
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 10px;">
+                    ברוך הבא להימור כפייתי מנהל
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 18px;">
+                    <p id="insert">בחר סוג הימור</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 20px;">
+                    <div>
+                        <input type="text" id="home" placeholder="קבוצת בית">
+                        <input type="text" id="away" placeholder="קבוצת חוץ">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 25px;">
+                    <div>
+                        <button id="basketball" onclick="basketballFormat()">כדורסל</button>
+                        <button id="soccer" onclick="soccerFormat()">כדורגל</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 30px;">
+                    <div class="center_select" id="gamePartDiv">
+                        <select id="gamePart">
+                    <option>
+                    הימור על תוצאת משחק
+                    </option>
+                    <option>
+                        הימור על מחצית + משחק
+                    </option>
+            </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 30px;">
+                    <div class="center_select" id="gamePartDivbasket">
+                        <input type="text" id="homeLimit" placeholder="הכנס גבול לקבוצת הבית">
+                        <input type="text" id="awayLimit" placeholder="הכנס גבול לקבוצת החוץ">
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 35px;">
+                    <div class="center_par" id="cen_par">
+                        <textarea id="message" name="message" placeholder="הפינה של מאור"></textarea>
+                    </div>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 40px;">
+                    <div class="center_paragraph">
+                        <p id="paragraph">
+                            <ol id="list">
+
+                            </ol>
+                        </p>
+                    </div>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 45px;">
+                    <div class="maor">
+                        <p id="maorParagraph">
+                        </p>
+                    </div>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 35px;">
+                    <div class="comments">
+                        <p id="commentsHead"> #תנו בראש
+                        </p>
+                    </div>
+
+                </td>
+            </tr>
+
+
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 55px;">
+                    <div class="center_buttons_finish_reset">
+                        <button id="back" onclick="goBack()" disabled="true"> חזור אחורה</button>
+                        <button id="submit" onclick="submit()" disabled="true">אשר</button>
+                    </div>
+
+                </td>
+            </tr>
+
+
+
+
+
+
+        </tbody>
+    </table>
+
+</body>
+
+</html>
