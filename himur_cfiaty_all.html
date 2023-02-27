@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>הימור כפייתי</title>
+</head>
+
+
+
+<body style="background-color:hsla(226, 66%, 47%, 0.342);">
+    <script src="himur_kfiyaty_all.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+
+    <table id="pass" width="100%" align="center" dir="rtl" style="max-width: 600px; display: flex;">
+        <tbody>
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 10px;">
+                    <input type="text" id="username" placeholder="שם משתמש" onmouseleave="fillNames()">
+                    <input type="password" id="password" placeholder="סיסמא">
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 10px;">
+                    <button type="button" class="button button2" id="confirm" onclick="confirmPassword()" style="width:100%;">
+                          אשר סיסמא
+                         </button>
+
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 10px;">
+                    <button type="button" class="button button2" id="changePassword" onclick="moveToButton('changeUserTable', 'usernameChange' ,'passwordChange')" style="width:100%;">
+                            שנה סיסמא
+                         </button>
+
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 10px;">
+                    <button type="button" class="button button2" id="addUserMain" onclick="moveToButton('addUserTable', 'usernameAdd', 'passwordAdd')" style="width:100%;">
+                            הוסף משתמש
+                          </button>
+
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table id="addUserTable" width="100%" align="center" dir="rtl" style="max-width: 600px; display: none;">
+        <tbody>
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 10px;">
+                    <input type="text" id="usernameAdd" placeholder="שם משתמש">
+                    <input type="text" id="passwordAdd" placeholder="סיסמא" required>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 10px;">
+
+                    <button type="button" class="button-91 button2" id="addUser" onclick="addUser()" style="width:100%;">
+                            הוסף משתמש
+                           </button>
+
+                    <button type="button" class="button-91 button2" id="returnAdd" onclick="returnBack('addUserTable')" style="width:100%;">
+                            חזור
+                           </button>
+
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table id="changeUserTable" width="100%" align="center" dir="rtl" style="max-width: 600px; display: none;">
+        <tbody>
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 10px;">
+                    <input type="text" id="usernameChange" placeholder="שם משתמש">
+                    <input type="text" id="passwordChange" placeholder="סיסמא" required>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 10px;">
+                    <a class="bn39"> <span class="bn39span" id="confirmBefore" onclick="confirmBeforeChange()">
+                        אשר סיסמא</span></a>
+                    <a class="bn39" id="changeUser" style="display: none;"> <span class="bn39span" onclick="changeUser()">
+                            שנה סיסמא</span></a>
+                    <a class="bn39"> <span class="bn39span" id="returnChange" onclick="returnBack('changeUserTable')">
+                                חזור</span></a>
+                    <p id="alertNoPassword">
+
+                    </p>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table id="page" width="100%" align="center" dir="rtl" style="max-width: 600px; display: none;">
+        <tbody>
+            <tr>
+                <td id="Welcome" width="100%" align="center" style="width:100%; padding-top: 10px;">
+                    ברוך הבא
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td width="100%" align="center" style="width:100%; padding-top: 17px; ">
+                    <label for="center_select"> בחר מספר הימור</label>
+                    <div id="center_select" id="numOfBet">
+                        <select id="gamePart" style=" font-size: 1.5rem;" onchange="getBetsDetails()">  
+                        </select>
+                        <p id="timer"></p>
+                    </div>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 20px;">
+                    <p id="ids"></p>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 10px;">
+                    <div style="transform: translateX(-25%);">
+                        <label for="halftime" id="htlabel" style="transform: translateX(-28%); display: flex;"> מחצית</label>
+                        <p id="halfTime" style=" margin: 0 auto; "> </p>
+
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="100%" style="width:100%; padding-top:20px;">
+
+                    <div style="transform: translateX(-25%);">
+                        <label for="game" id="gamelabel" style="margin: auto; display: flex;"> סיום משחק</label>
+                        <p id="game" style=" margin: 0 auto;"></p>
+
+                    </div>
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 20px;">
+                    <div class="center_select " id="bets" style="display: none;">
+                        <ol id="bodyBasketball" style="font-size: 1rem;">
+                            <li id="one"></li>
+                            <li id="two"></li>
+                            <li id="three"></li>
+                            <li id="four"></li>
+                            <li id="five"></li>
+
+                        </ol>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 20px;">
+                    <div class="center_select" id="basketballTeamsId" style="display: none;">
+                        <label id="labelSelectTeam" for="teamsBasketball">בחר קבוצה</label>
+                        <select id="teamsBasketball" style="font-size: 0.8rem; " onchange="basketballTeams()">
+                            
+                        </select>
+                        <label id="labelSelect" for="numForBasketball">בחר תוצאה</label>
+                        <input type="text" id="numForBasketball" onkeyup="validateDifference()">
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 24px;">
+                    <div tyle="margin: auto;">
+                        <p id="alert"></p>
+                        <p id="alert1"></p>
+                        <button class="bn632-hover bn23" id="apply" onclick="applyBasketBall()" style="display:none">ודא הימור - שים לב מה שנרשם למעלה זה הימור שיירשם</button>
+
+
+                    </div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td width="100% " align="center " style="width:100%; padding-top: 35px; ">
+                    <div id="comments" tyle="margin: auto;">
+                        <p id="maors"></p>
+                        <p id="commentsHead ">
+                            #תנו בראש
+                        </p>
+                    </div>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td width="100% " align="center " style="width:100%; padding-top: 38px; ">
+                    <div>
+                        <button id="submitBets" onclick="confirmBet()" style=" background-color:hsl(125, 100%, 50%); font-size: 1.5rem; color: #fff;" disabled>אשר</button>
+                        <button id="deleteBets" onclick="deleteBet()" style=" background-color:hsl(125, 100%, 50%);  font-size: 1.5rem; color: #fff;">מחק הימור</button>
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

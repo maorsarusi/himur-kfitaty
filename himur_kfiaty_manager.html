@@ -1,128 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<style>
-    .center_select {
-        justify-content: center;
-        align-items: center;
-        height: 70px;
-        display: none;
-    }
-</style>
-
-<style>
-    .center_par {
-        justify-content: center;
-        align-items: center;
-        height: 70px;
-        display: none;
-    }
-</style>
-
-<style>
-    .center_paragraph {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 80px;
-    }
-</style>
-
-<style>
-    .center_select {
-        display: none;
-    }
-</style>
-
-<style>
-    .center_maor {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 80px;
-        display: none;
-    }
-</style>
-
-<style>
-    .comments {
-        font-weight: bold;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 90px;
-    }
-</style>
-
-
-
-<style>
-    .listBet {
-        direction: rtl;
-    }
-</style>
-
-<style>
-    .pList {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 800px;
-    }
-</style>
-
-
-<style>
-    input[type="text"]::placeholder {
-        text-align: right;
-    }
-</style>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>הימור כפייתי מנהל
     </title>
-    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-    <script src="himur kfiyati manager.js"></script>
+
 </head>
 
 
 <body style="background-color:  hsl(68, 82%, 51%);">
-
+    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+    <script src="himur_kfiyati_manager.js"></script>
     <table width="100%" align="center" dir="rtl" style="max-width: 600px;">
         <tbody>
             <tr>
                 <td width="100%" align="center" style="width:100%; padding-top: 10px;">
                     ברוך הבא להימור כפייתי מנהל
                 </td>
+
             </tr>
             <tr>
-                <td width="100%" align="center" style="width:100%; padding-top: 18px;">
+                <td width="100%" align="center" style="width:100%; padding-top: 12px; font-weight: bold;">
+                    שים לב!! עליך למחוק את כל הרשומות לפני שתרשום את ההימור
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 18px; ">
                     <p id="insert">בחר סוג הימור</p>
                 </td>
             </tr>
             <tr>
                 <td width="100%" align="center" style="width:100%; padding-top: 20px;">
                     <div>
-                        <input type="text" id="home" placeholder="קבוצת בית">
-                        <input type="text" id="away" placeholder="קבוצת חוץ">
+                        <input type="text" id="home" placeholder="קבוצת בית" onmouseleave="getId()">
+                        <input type="text" id="away" placeholder="קבוצת חוץ" onmouseleave="getYearId()">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 22px;">
+                    <input type="date" id="date">
+                    <div>
+                        <label for="appt">
+                        בחר שעת משחק(ההימור יינעל עשר דקות לפני)
+                        </label>
+                        <input type="time" id="appt" name="appt" min="00:00" max="23:45" required>
                     </div>
                 </td>
             </tr>
             <tr>
                 <td width="100%" align="center" style="width:100%; padding-top: 25px;">
                     <div>
-                        <button id="basketball" onclick="basketballFormat()">כדורסל</button>
-                        <button id="soccer" onclick="soccerFormat()">כדורגל</button>
+                        <button id="basketball" onclick="basketballFormat()" style=" background-color:hsl(125, 100%, 50%); font-size: 1.5rem; color: #fff;">כדורסל</button>
+                        <button id="soccer" onclick="soccerFormat()" style=" background-color:hsl(125, 100%, 50%);  font-size: 1.5rem; color: #fff">כדורגל</button>
                     </div>
                 </td>
             </tr>
             <tr>
                 <td width="100%" align="center" style="width:100%; padding-top: 30px;">
                     <div class="center_select" id="gamePartDiv">
-                        <select id="gamePart">
+                        <select id="gamePart" style="  font-size: 1.5rem;">
                     <option>
                     הימור על תוצאת משחק
                     </option>
@@ -145,7 +86,7 @@
             <tr>
                 <td width="100%" align="center" style="width:100%; padding-top: 35px;">
                     <div class="center_par" id="cen_par">
-                        <textarea id="message" name="message" placeholder="הפינה של מאור"></textarea>
+                        <textarea id="message" name="message" placeholder="הפינה של מאור" onkeyup="divide()"></textarea>
                     </div>
 
                 </td>
@@ -154,10 +95,18 @@
             <tr>
                 <td width="100%" align="center" style="width:100%; padding-top: 40px;">
                     <div class="center_paragraph">
-                        <p id="paragraph">
-                            <ol id="list">
 
-                            </ol>
+                        <ol id="list">
+
+                        </ol>
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 42px;">
+                    <div class="center_paragraph">
+                        <p id="paragraph">
                         </p>
                     </div>
 
@@ -188,8 +137,9 @@
             <tr>
                 <td width="100%" align="center" style="width:100%; padding-top: 55px;">
                     <div class="center_buttons_finish_reset">
-                        <button id="back" onclick="goBack()" disabled="true"> חזור אחורה</button>
-                        <button id="submit" onclick="submit()" disabled="true">אשר</button>
+                        <button id="back" onclick="goBack()" disabled style=" background-color:#007bff;  font-size: 1.5rem; color: #fff"> חזור אחורה</button>
+                        <button id="submit" onclick="submit()" disabled style=" background-color:#007bff;  font-size: 1.5rem; color: #fff">אשר</button>
+                        <button id="remove" onclick="removeRecords()" style=" background-color:#007bff;  font-size: 1.5rem; color: #fff">מחק הימורים שנרשמו</button>
                     </div>
 
                 </td>

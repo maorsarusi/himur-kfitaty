@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title> הימור כפייתי תוצאות</title>
+</head>
+
+
+
+<body style="background-color:hsla(226, 66%, 47%, 0.342);">
+    <script src="himur_kfiaty_results.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+
+    <table id="page" width="100%" align="center" dir="rtl" style="max-width: 600px;">
+        <tbody>
+            <tr>
+                <td id="Welcome" width="100%" align="center" style="width:100%; padding-top: 10px;">
+                    ברוך הבא
+
+                </td>
+            </tr>
+            <tr>
+                <td id="Welcome" width="100%" align="center" style="width:100%; padding-top: 10px;">
+                    <button id="loadBets" onclick="getBetsDetails(0)" style=" background-color:hsl(125, 100%, 50%); font-size: 1.5rem; color: #fff;">טען הימורים</button>
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td width="100%" align="center" style="width:100%; padding-top: 17px; ">
+                    <label for="center_select"> בחר מספר הימור</label>
+                    <div id="center_select" id="numOfBet">
+                        <select id="gamePart" style=" font-size: 1.5rem;" onchange="getBetsDetails()">  
+                        </select>
+                        <p id="timer"></p>
+
+                    </div>
+                </td>
+
+            </tr>
+
+
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 20px;">
+                    <p id="ids"></p>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 10px;">
+                    <div style="transform: translateX(-25%);">
+                        <label for="halftime" id="htlabel" style="display: flex;"> מחצית</label>
+                        <p id="halfTime" style=" margin: 0 auto; "> </p>
+
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="100%" style="width:100%; padding-top:20px;">
+
+                    <div style="transform: translateX(-25%);">
+                        <label for="game" id="gamelabel" style="margin: auto; display: flex;"> סיום משחק</label>
+                        <p id="game" style=" margin: 0 auto;"></p>
+
+                    </div>
+                </td>
+            </tr>
+
+
+
+
+
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 20px;">
+                    <div class="center_select" id="basketballTeamsId" style="display: none;">
+                        <label id="labelSelectTeam" for="teamsBasketball">בחר קבוצה</label>
+                        <select id="teamsBasketball" style="font-size: 0.8rem; " onchange="basketballTeams()">
+                            
+                        </select>
+                        <label id="labelSelect" for="numForBasketball">בחר תוצאה</label>
+                        <input type="text" id="numForBasketball" onkeyup="validateDifference()">
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="100%" align="center" style="width:100%; padding-top: 24px;">
+                    <div tyle="margin: auto;">
+                        <p id="alert"></p>
+                        <p id="alert1"></p>
+                    </div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td width="100% " align="center " style="width:100%; padding-top: 35px; ">
+                    <div id="comments" tyle="margin: auto;">
+                        <p id="maors"></p>
+                        <p id="commentsHead ">
+                            #תנו בראש
+                        </p>
+                    </div>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td width="100% " align="center " style="width:100%; padding-top: 38px; ">
+                    <div>
+                        <button id="submitBets" onclick="confirmBet()" style=" background-color:hsl(125, 100%, 50%); font-size: 1.5rem; color: #fff;" disabled>הכנס תוצאת משחק</button>
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+
+            </tr>
+        </tbody>
+    </table>
+    </table>
+</body>
+
+</html>
